@@ -32,8 +32,8 @@ project_root/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_NAME_rl_summative.git
-cd YOUR_NAME_rl_summative
+git clone https://github.com/rodwol/rodas_goniche_rl_summative.git
+cd rodas_goniche_rl_summative
 ```
 
 ### 2. Create a virtual environment (recommended)
@@ -89,9 +89,5 @@ python main.py
 | DQN | Value-based | Stable Baselines 3 |
 | REINFORCE | Policy Gradient | Custom (PyTorch) |
 | PPO | Policy Gradient | Stable Baselines 3 |
-| A2C | Actor-Critic | Stable Baselines 3 |
 
 ---
-
-## Capstone Connection
-This environment directly supports the capstone research project: *"Predictive Analytics for Medication Shortage Management in African Healthcare Supply Chains."* The RL agent models the decision-making layer that acts on shortage predictions, learning to optimise procurement to prevent stockouts.
