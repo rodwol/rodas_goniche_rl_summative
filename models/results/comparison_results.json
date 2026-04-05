@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "timestamp": "2026-04-04T21:01:46.448092",
+    "environment": "PharmacySupplyEnv-v0",
+    "description": "Cross-algorithm RL evaluation for medication shortage prevention in African healthcare supply chains."
+  },
+  "best_algorithm": "DQN",
+  "algorithm_summary": {
+    "dqn": {
+      "model_path": "models/dqn\\dqn_run_10.zip",
+      "n_episodes": 5,
+      "mean_total_reward": 3421.4,
+      "std_total_reward": 59.01,
+      "mean_service_rate": 100.0,
+      "mean_stockout_days": 0.0,
+      "mean_emergency_orders": 0.0
+    },
+    "reinforce": {
+      "model_path": "models/pg/reinforce\\reinforce_run_10.pt",
+      "n_episodes": 5,
+      "mean_total_reward": 1811.4,
+      "std_total_reward": 260.95,
+      "mean_service_rate": 99.68,
+      "mean_stockout_days": 0.8,
+      "mean_emergency_orders": 47.6
+    },
+    "ppo": {
+      "model_path": "models/pg/ppo\\ppo_run_10.zip",
+      "n_episodes": 5,
+      "mean_total_reward": 103.0,
+      "std_total_reward": 18.17,
+      "mean_service_rate": 84.44,
+      "mean_stockout_days": 3.0,
+      "mean_emergency_orders": 0.0
+    }
+  },
+  "api_integration_example": {
+    "description": "The trained agent can be deployed as a REST API. A pharmacy dashboard POSTs current inventory state and receives an order recommendation.",
+    "endpoint": "POST /api/v1/recommend-order",
+    "request_body": {
+      "stock_level_ratio": 0.35,
+      "days_to_stockout": 0.2,
+      "lead_time_remaining": 0.0,
+      "demand_trend": 0.44,
+      "pending_order": 0.0,
+      "time_progress": 0.55,
+      "high_season": 1.0
+    },
+    "response_body": {
+      "recommended_action": 2,
+      "action_label": "Order medium batch (50% capacity)",
+      "confidence": 0.87,
+      "algorithm_used": "DQN"
+    }
+  }
+}

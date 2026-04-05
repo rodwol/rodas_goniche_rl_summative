@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "algorithm": "DQN",
+    "model_path": "models/dqn\\dqn_run_10.zip",
+    "environment": "PharmacySupplyEnv-v0",
+    "timestamp": "2026-04-04T11:57:32.042058",
+    "description": "RL agent results for medication shortage prevention. Each episode simulates one year of pharmacy operations."
+  },
+  "summary": {
+    "n_episodes": 2,
+    "mean_reward": 3483.0,
+    "mean_service_rate": 100.0,
+    "mean_stockout_days": 0.0,
+    "mean_emergency_orders": 0.0
+  },
+  "episodes": [
+    {
+      "episode": 1,
+      "total_reward": 3463.0,
+      "steps": 365,
+      "stockout_days": 0,
+      "overstock_days": 95,
+      "orders_placed": 174,
+      "emergency_orders": 0,
+      "mean_daily_reward": 9.49,
+      "min_stock": 107.0,
+      "max_stock": 498.0,
+      "service_rate": 100.0
+    },
+    {
+      "episode": 2,
+      "total_reward": 3503.0,
+      "steps": 365,
+      "stockout_days": 0,
+      "overstock_days": 87,
+      "orders_placed": 181,
+      "emergency_orders": 0,
+      "mean_daily_reward": 9.6,
+      "min_stock": 117.0,
+      "max_stock": 495.0,
+      "service_rate": 100.0
+    }
+  ],
+  "api_example": {
+    "endpoint": "POST /api/v1/predict",
+    "description": "Send current pharmacy state, receive action recommendation",
+    "request": {
+      "stock_level": 0.62,
+      "days_to_stockout": 0.48,
+      "lead_time": 0.3,
+      "demand_trend": 0.44,
+      "pending_order": 0.25,
+      "time_step": 0.39,
+      "season_flag": 0.0
+    },
+    "response": {
+      "recommended_action": 1,
+      "action_name": "Order small batch (25%)",
+      "confidence": 0.84,
+      "predicted_reward": 10.0
+    }
+  }
+}
